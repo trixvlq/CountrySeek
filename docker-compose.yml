@@ -1,0 +1,27 @@
+services:
+  country_app:
+    build:
+      context: .
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - /CountrySeek/CountrySeek/
+
+    env_file:
+      - .env
+
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+
+    depends_on:
+      - country_database
+  country_database:
+    image: postgres:alpine
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
