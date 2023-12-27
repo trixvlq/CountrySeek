@@ -7,7 +7,7 @@ services:
       - "8000:8000"
 
     volumes:
-      - /CountrySeek/CountrySeek/
+      - ./CountrySeek:/CountrySeek
 
     env_file:
       - .env
