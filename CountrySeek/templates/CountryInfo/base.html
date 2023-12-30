@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -13,22 +13,21 @@
 <body>
     <header>
         <div class="left-side-head">
-            <h1>CWeather</h1>
+            <a href="#">CWeather</a>
         </div>
         <div class="right-side-head">
-            <form method="post" action = "{% url 'search' %}">
-            <div class="search-bar">
-                {% csrf_token %}
-                <input type="text" placeholder="Country" name="q_name">
-                <button type="submit"><i class='bx bx-search'></i></button>
-            </div>
+            <form method="post" action="{% url 'search' %}">
+                <div class="search-bar">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Country" name="q_name">
+                    <button type="submit"><i class='bx bx-search'></i></button>
+                </div>
             </form>
             <i class='bx bx-menu'></i>
         </div>
     </header>
-    <menu>
-        {% block content %}{% endblock %}
-    </menu>
+    {% block content %}
+    {% endblock %}
 </body>
 
 </html>

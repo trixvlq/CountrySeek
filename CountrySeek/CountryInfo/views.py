@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def mainPage(request):
-    return render(request, 'CountryInfo/index.html')
+    return render(request, 'CountryInfo/site/index.html')
 
 def search(request):
     if request.method == 'POST':
