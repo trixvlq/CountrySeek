@@ -26,4 +26,5 @@ async def search(request):
         timezones = data.get('timezones')
         flag_key = list(data.get('flags'))
         flag = data.get('flags').get(flag_key[0])
-        return JsonResponse(flag,safe=False)
+        # return JsonResponse(flag,safe=False)
+        return render(request, 'CountryInfo/site/search.html')

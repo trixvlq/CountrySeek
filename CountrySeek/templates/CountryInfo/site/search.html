@@ -1,16 +1,29 @@
 {% extends '../base.html' %}
 
 {% block title %}
-Weather
+{{ c_name }} <!-- country name as page title -->
 {% endblock %}
 
 {% block content %}
 <div class="content">
     <div class="main">
-        <h1>Country Weather</h1>
+        <h1>Kazakhstan</h1> <!-- name of searched country -->
         <div class="city-info">
-            <div class="title">
-                <a href="#" method="">Kazakhstan</a>
+            <div class="capital">
+                <h3>Capital:</h3>
+                <span>capital_name</span>
+            </div>
+            <div class="currency">
+                <h3>Currency:</h3>
+                <span>currency_name</span>
+            </div>
+            <div class="region">
+                <h3>Region:</h3>
+                <span>region_name</span>
+            </div>
+            <div class="language">
+                <h3>Language:</h3>
+                <span>language_name</span>
             </div>
             <h2>Weekly weather forecast</h2>
             <div class="weather">
@@ -43,49 +56,6 @@ Weather
                     <h3>Saturday</h3>
                     <i class='bx bx-cloud'></i>
                     <span>0℃</span>
-                </div>
-                <div class="day">
-                    <h3>Sunday</h3>
-                    <i class='bx bx-cloud'></i>
-                    <span>2℃</span>
-                </div>
-            </div>
-        </div>
-        <div class="city-info">
-            <div class="title">
-                <a href="#">Russia</a>
-            </div>
-            <h2>Week weather forecast</h2>
-            <div class="weather">
-                <div class="day">
-                    <h3>Monday</h3>
-                    <i class='bx bx-cloud-snow'></i>
-                    <span>0℃</span>
-                </div>
-                <div class="day">
-                    <h3>Tuesday</h3>
-                    <i class='bx bx-cloud-snow'></i>
-                    <span>-1℃</span>
-                </div>
-                <div class="day">
-                    <h3>Wednesday</h3>
-                    <i class='bx bx-cloud-snow'></i>
-                    <span>-3℃</span>
-                </div>
-                <div class="day">
-                    <h3>Thursday</h3>
-                    <i class='bx bx-cloud-snow'></i>
-                    <span>-5℃</span>
-                </div>
-                <div class="day">
-                    <h3>Friday</h3>
-                    <i class='bx bx-cloud-snow'></i>
-                    <span>-4℃</span>
-                </div>
-                <div class="day">
-                    <h3>Saturday</h3>
-                    <i class='bx bx-cloud'></i>
-                    <span>1℃</span>
                 </div>
                 <div class="day">
                     <h3>Sunday</h3>
