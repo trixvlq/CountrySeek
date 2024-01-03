@@ -7,61 +7,42 @@
 {% block content %}
 <div class="content">
     <div class="main">
-        <h1>Kazakhstan</h1> <!-- name of searched country -->
+        <h1>{{c_name}}</h1><img src="{{flag}}">
         <div class="city-info">
             <div class="capital">
                 <h3>Capital:</h3>
-                <span>capital_name</span>
+                <span>{{c_capital}}</span>
             </div>
             <div class="currency">
                 <h3>Currency:</h3>
-                <span>currency_name</span>
+                <span>{{c_currency_name}}|{{c_currency_symbol}}</span>
             </div>
             <div class="region">
                 <h3>Region:</h3>
-                <span>region_name</span>
+                <span>{{c_region}}</span>
+            </div>
+            <div class="region">
+                <h3>Population:</h3>
+                <span>{{c_population}}</span>
             </div>
             <div class="language">
                 <h3>Language:</h3>
-                <span>language_name</span>
+                <span>{% for language in c_languages %}
+                        {{ language }}
+                        {% if not forloop.last %},{% endif %}{% endfor %}</span>
             </div>
-            <h2>Weekly weather forecast</h2>
+            <h2>How is the weather up there?</h2>
             <div class="weather">
                 <div class="day">
-                    <h3>Monday</h3>
+                    <h3>The weather in the capital:{{c_capital}} is</h3>
+                    <h1>{{weather_temp}},{{weather_short}}</h1>
+                    <p>{{weather_desc}}</p>
+                    <h3>The temperature is {{weather_temp}} degrees celsius but if feels like {{weather_feel}}</h3>
+                    <h3>The least the weather is going to be is {{weather_min}} and the max is {{weather_max}}</h3>
                     <i class='bx bx-cloud-snow'></i>
-                    <span>-3℃</span>
+                    <span></span>
                 </div>
-                <div class="day">
-                    <h3>Tuesday</h3>
-                    <i class='bx bx-cloud-snow'></i>
-                    <span>-1℃</span>
-                </div>
-                <div class="day">
-                    <h3>Wednesday</h3>
-                    <i class='bx bx-cloud'></i>
-                    <span>0℃</span>
-                </div>
-                <div class="day">
-                    <h3>Thursday</h3>
-                    <i class='bx bx-cloud'></i>
-                    <span>1℃</span>
-                </div>
-                <div class="day">
-                    <h3>Friday</h3>
-                    <i class='bx bx-cloud-snow'></i>
-                    <span>-5℃</span>
-                </div>
-                <div class="day">
-                    <h3>Saturday</h3>
-                    <i class='bx bx-cloud'></i>
-                    <span>0℃</span>
-                </div>
-                <div class="day">
-                    <h3>Sunday</h3>
-                    <i class='bx bx-cloud'></i>
-                    <span>2℃</span>
-                </div>
+
             </div>
         </div>
     </div>

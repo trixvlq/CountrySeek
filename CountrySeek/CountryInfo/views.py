@@ -26,5 +26,35 @@ async def search(request):
         timezones = data.get('timezones')
         flag_key = list(data.get('flags'))
         flag = data.get('flags').get(flag_key[0])
-        # return JsonResponse(flag,safe=False)
-        return render(request, 'CountryInfo/site/search.html')
+        weather = await get_country_weather(c_capital)
+        weather_short = weather.get('weather')[0].get('main')
+        weather_desc = weather.get('weather')[0].get('description')
+        weather_temp = weather.get('main').get('temp')
+        weather_feel = weather.get('main').get('feels_like')
+        weather_min = weather.get('main').get('temp_min')
+        weather_max = weather.get('main').get('temp_max')
+        context = {
+            'weather_short': weather_short,
+            'weather_desc': weather_desc,
+            'weather_temp': weather_temp,
+            'weather_feel': weather_feel,
+            'weather_min': weather_min,
+            'weather_max': weather_max,
+            'c_name': c_name,
+            'c_capital': c_capital,
+            'c_currency_key': c_currency_key,
+            'c_currency_name': c_currency_name,
+            'c_currency_symbol': c_currency_symbol,
+            'c_region': c_region,
+            'c_languages': c_languages,
+            'c_latlng': c_latlng,
+            'c_borders': c_borders,
+            'c_map_key': c_map_key,
+            'c_map': c_map,
+            'c_population': c_population,
+            'c_continents': c_continents,
+            'timezones': timezones,
+            'flag_key': flag_key,
+            'flag': flag,
+        }
+        return render(request, 'CountryInfo/site/search.html',context)
