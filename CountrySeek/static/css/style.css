@@ -46,6 +46,7 @@ header {
     border-width: 0;
 }
 .right-side-head .search-bar i {
+    cursor: pointer;
     font-size: 25px;
     padding: 5px 8px;
     font-weight: 200;
@@ -83,46 +84,48 @@ header {
 .content {
     display: grid;
     grid-template-columns: 75% 22%;
-    margin: 4% 12%;
+    margin: 4% 17%;
     justify-content: space-between;
 }
-.content .main, .history {
+.main, .side-info {
     padding: 15px 20px;
     border-radius: 10px;
     color: var(--light-color);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     height: fit-content;
 }
-.content .main h1 {
+.main h1 {
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
 }
-.content .city-info {
+
+/* INDEX PAGE */
+.main .city-info {
     background-color: var(--light-color);
     color: var(--dark-color);
     padding: 10px;
     border-radius: 3px;
     margin-bottom: 15px;
 }
-.content .city-info h2 {
+.main .city-info h2 {
     display: flex;
     justify-content: center;
 }
-.content .city-info .title {
+.main .city-info .title {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
     font-size: 20px;
 }
-.content .city-info .title a {
+.main .city-info .title a {
     text-decoration: none;
     color: var(--dark-color);
     font-weight: bold;
     font-size: 25px;
 }
-.content .city-info .weather .day {
+.main .city-info .w-weather .day {
     background: color-mix(in srgb, var(--light-blue-color) 70%, transparent);
     color: var(--light-color);
     width: fit-content;
@@ -133,51 +136,62 @@ header {
     justify-content: center;
     border-radius: 10px;
 }
-.content .city-info .weather .day h3 {
+.main .city-info .w-weather .day h3 {
     color: var(--primary-color);
 }
-.content .city-info .weather .day i {
+.main .city-info .w-weather .day i {
     margin: 10px 0;
     font-size: 50px;
     color: var(--secondary-color);
 }
-.content .city-info .weather .day span {
+.main .city-info .w-weather .day span {
     font-size: 20px;
     font-weight: bold;
 }
-.content .city-info .weather {
+.main .city-info .w-weather {
     display: flex;
     justify-content: space-around;
     margin-top: 10px;
 }
-.content .city-info .capital, .currency, .region, .language {
+
+/* SEARCH PAGE */
+.main .right-side-main .capital, .region, .language, .population {
     display: flex;
     flex-direction: row;
+    column-gap: 5px;
     align-items: center;
     margin-bottom: 6px;
 }
-
-/* HISTORY */
-.content .history h2 {
-    margin-bottom: 20px;
+.main .top {
+    display: grid;
+    grid-template-columns: 50% auto;
+    justify-content: space-between;
+    /* margin-bottom: 20px; */
 }
-.content .history .h-city {
+
+/* SIDE-INFO */
+.content .side-info .block-info {
     background-color: var(--light-color);
     color: var(--dark-color);
     padding: 10px 5px;
     border-radius: 3px;
+    margin: 10px 0 20px;
 }
-.content .history .h-city .top, .info {
+.content .side-info .block-info .top, .info {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.content .history .h-city a {
+.content .side-info .block-info a {
     text-decoration: none;
     color: var(--dark-color);
     font-weight: bold;
     font-size: 18px;
 }
-.content .history .h-city i {
+.content .side-info .block-info i {
     font-size: 20px;
+}
+.content .side-info .weather .block-info .icon {
+    display: flex;
+    align-items: center;
 }

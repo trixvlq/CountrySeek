@@ -1,63 +1,72 @@
 {% extends '../base.html' %}
 
 {% block title %}
-{{ c_name }} <!-- country name as page title -->
+{{ c_name }}
 {% endblock %}
 
 {% block content %}
 <div class="content">
     <div class="main">
-        <h1>{{c_name}}</h1><img src="{{flag}}">
-        <div class="city-info">
-            <div class="capital">
-                <h3>Capital:</h3>
-                <span>{{c_capital}}</span>
+        <h1>{{c_name}}</h1>
+        <div class="top">
+            <div class="left-side-main">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores eligendi eius, natus, atque omnis,
+                    rerum quibusdam ea molestiae doloribus quisquam doloremque asperiores quae odio inventore quia ex
+                    animi magnam deserunt!</p>
             </div>
-            <div class="currency">
-                <h3>Currency:</h3>
-                <span>{{c_currency_name}}|{{c_currency_symbol}}</span>
-            </div>
-            <div class="region">
-                <h3>Region:</h3>
-                <span>{{c_region}}</span>
-            </div>
-            <div class="region">
-                <h3>Population:</h3>
-                <span>{{c_population}}</span>
-            </div>
-            <div class="language">
-                <h3>Language:</h3>
-                <span>{% for language in c_languages %}
-                        {{ language }}
-                        {% if not forloop.last %},{% endif %}{% endfor %}</span>
-            </div>
-            <h2>How is the weather up there?</h2>
-            <div class="weather">
-                <div class="day">
-                    <h3>The weather in the capital:{{c_capital}} is</h3>
-                    <h1>{{weather_temp}},{{weather_short}}</h1>
-                    <p>{{weather_desc}}</p>
-                    <h3>The temperature is {{weather_temp}} degrees celsius but if feels like {{weather_feel}}</h3>
-                    <h3>The least the weather is going to be is {{weather_min}} and the max is {{weather_max}}</h3>
-                    <i class='bx bx-cloud-snow'></i>
-                    <span></span>
+            <div class="right-side-main">
+                <img src="{{flag}}" alt="Official flag of {{c_name}}" style="width: 300px; margin-bottom: 5px;">
+                <div class="capital">
+                    <h3>Capital:</h3>
+                    <p>{{c_capital}}</p>
                 </div>
-
+                <div class="region">
+                    <h3>Region:</h3>
+                    <p>{{c_region}}</p>
+                </div>
+                <div class="population">
+                    <h3>Population:</h3>
+                    <p>{{c_population}}</p>
+                </div>
+                <div class="language">
+                    <h3>Language:</h3>
+                    <p>{% for language in c_languages %}
+                        {{ language }}
+                        {% if not forloop.last %},{% endif %}{% endfor %}</p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="history">
-        <h2>History</h2>
-        <div class="h-city">
-            <div class="top">
-                <a href="#">Kazakhstan</a>
-                <i class='bx bxs-business'></i>
+    <div class="side-info">
+        <div class="currency">
+            <h2>Currency</h2>
+            <div class="block-info">
+                {% for currency_key in c_currency_key %}
+                <h4>1{{c_currency_symbol}} {{currency_key}}({{c_currency_name}})</h4>
+                <h4>0.0022$</h4>
+                <h4>0.2013₽</h4>
+                {% endfor %}
             </div>
-            <div class="info">
-                <p>
-                    12.0℃
-                </p>
-                <i class='bx bxs-cloud'></i>
+        </div>
+        <div class="weather">
+            <h2>Weather</h2>
+            <div class="block-info">
+                <h2>{{c_capital}}</h2>
+                <div class="info">
+                    <div class="icon">
+                        {% if weather_short == 'Clouds' %}
+                        <i class='bx bx-cloud'></i>
+                        {% elif weather_short == 'Sun' %}
+                        <i class='bx bx-sun'></i>
+                        {% else %}
+                        <i class='bx bx-cloud-snow'></i>
+                        {% endif %}
+                        <h4>{{weather_short}}</h4>
+                    </div>
+                    <h4>{{weather_temp}}</h4>
+                </div>
+                <!-- <p>The temperature is {{weather_temp}} degrees celsius but if feels like {{weather_feel}}</з> -->
+                <!-- <h3>The least the weather is going to be is {{weather_min}} and the max is {{weather_max}}</h3> -->
             </div>
         </div>
     </div>

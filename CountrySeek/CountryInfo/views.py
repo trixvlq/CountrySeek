@@ -57,4 +57,4 @@ async def search(request):
             'flag_key': flag_key,
             'flag': flag,
         }
-        return render(request, 'CountryInfo/site/search.html',context)
+        return render(request, 'CountryInfo/site/search.html', context)
