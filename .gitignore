@@ -1,3 +1,5 @@
 venv
 .idea
 .env
+CountrySeek/CountryInfo/__pycache__/services.cpython-310.pyc
+CountrySeek/CountryInfo/__pycache__/views.cpython-310.pyc
