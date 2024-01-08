@@ -13,7 +13,7 @@ services:
       - .env
 
     command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+      sh -c "uvicorn CountrySeek.asgi:application --host 0.0.0.0 --port 8000 --reload"
 
     depends_on:
       - country_database
