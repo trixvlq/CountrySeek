@@ -10,9 +10,7 @@
         <h1>{{c_name}}</h1>
         <div class="top">
             <div class="left-side-main">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores eligendi eius, natus, atque omnis,
-                    rerum quibusdam ea molestiae doloribus quisquam doloremque asperiores quae odio inventore quia ex
-                    animi magnam deserunt!</p>
+                <p>{{description}}</p>
             </div>
             <div class="right-side-main">
                 <img src="{{flag}}" alt="Official flag of {{c_name}}" style="width: 300px; margin-bottom: 5px;">
@@ -43,8 +41,7 @@
             <div class="block-info">
                 {% for currency_key in c_currency_key %}
                 <h4>1{{c_currency_symbol}} {{currency_key}}({{c_currency_name}})</h4>
-                <h4>0.0022$</h4>
-                <h4>0.2013₽</h4>
+                <h4>1{{c_currency_symbol}}|1USD:{{ comparesment }}|1</h4>
                 {% endfor %}
             </div>
         </div>
@@ -65,8 +62,12 @@
                     </div>
                     <h4>{{weather_temp}}</h4>
                 </div>
-                <!-- <p>The temperature is {{weather_temp}} degrees celsius but if feels like {{weather_feel}}</з> -->
-                <!-- <h3>The least the weather is going to be is {{weather_min}} and the max is {{weather_max}}</h3> -->
+            </div>
+        </div>
+        <div class="map">
+            <h2>Map</h2>
+            <div class="block-info">
+                <img src="{{ c_map }}" alt="Map Image">
             </div>
         </div>
     </div>
