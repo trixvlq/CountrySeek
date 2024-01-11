@@ -1,5 +1,5 @@
 {% extends '../base.html' %}
-
+{% load static %}
 {% block title %}
 {{ c_name }}
 {% endblock %}
@@ -13,7 +13,11 @@
                 <p>{{description}}</p>
             </div>
             <div class="right-side-main">
-                <img src="{{flag}}" alt="Official flag of {{c_name}}" style="width: 300px; margin-bottom: 5px;">
+                {% if flag %}
+                    <img src="{{flag}}" alt="Flag of {{flag}}" style="width: 300px; margin-bottom: 5px;">
+                {% else %}
+                    <img src="{% static 'img/bad.jpg' %}" alt="" style="width: 300px; margin-bottom: 5px;">
+                {% endif %}
                 <div class="capital">
                     <h3>Capital:</h3>
                     <p>{{c_capital}}</p>

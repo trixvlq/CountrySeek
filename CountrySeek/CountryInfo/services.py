@@ -1,11 +1,6 @@
 import os
-import time
-import asyncio
 import aiohttp
-import httpx
-# from openai import OpenAI
 from serpapi import GoogleSearch
-import currencyapicom
 
 
 async def get_country(name: str):
@@ -49,6 +44,8 @@ async def get_country(name: str):
                     'flag_key': flag_key,
                     'flag': flag,
                 }
+            else:
+                return False
 
 
 async def get_comparesment(name: str):
@@ -64,28 +61,8 @@ async def get_comparesment(name: str):
                 data = await response.json()
                 comparesment = data.get('data').get(name).get('value')
                 return comparesment
-
-
-# async def get_comparesment(name: str):
-#     key = os.environ.get('api_currency')
-#     print(f'name:{name}')
-#     url = f'https://api.currencyapi.com/v3/latest/?apikey={key}&currencies={name}'
-#     async with aiohttp.ClientSession() as session:
-#         async with session.get(url) as response:
-#             print(f'response:{response.status}')
-#             if response.status == 200:
-#                 data = await response.json()
-#                 print(f'data:{data}')
-#                 comparesment = data.get('data').get(name).get('value')
-#                 return comparesment
-# async def get_country_weather(capital: str):
-#     url = f'https://api.openweathermap.org/data/2.5/weather?q={capital}&appid=cb8801fceffebeb18636363fc0e20105&units=metric'
-#     async with httpx.AsyncClient() as client:
-#         response = await client.get(url)
-#         if response.status_code == 200:
-#             data = response.json()
-#             return data
-
+            else:
+                return False
 async def get_country_weather(capital: str):
     url = f'https://api.openweathermap.org/data/2.5/weather?q={capital}&appid=cb8801fceffebeb18636363fc0e20105&units=metric'
     async with aiohttp.ClientSession() as session:
@@ -102,21 +79,8 @@ async def get_country_weather(capital: str):
                     'weather_temp': weather_temp,
                     'weather_feel': weather_feel
                 }
-
-
-# async def get_county_desc(name: str):
-#     client = OpenAI(
-#         api_key = os.environ.get('gpt_api'),
-#     )
-#     query = client.chat.completions.create(
-#         model="GPT-3",
-#         messages=[
-#             {"role": "system", "content": "You are a helpful assistant."},
-#             {"role": "user", "content": f"tell me about {name}"}
-#         ]
-#     )
-#     print(query.choices[0].message)
-
+            else:
+                return False
 
 async def get_county_desc(name: str):
     params = {
