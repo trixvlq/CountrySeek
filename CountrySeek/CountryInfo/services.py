@@ -10,8 +10,12 @@ async def get_country(name: str):
             if response.status == 200:
                 data = await response.json()
                 data = data[0]
+                print(data)
                 c_name = data.get('name').get('official')
-                c_capital = data.get('capital')[0]
+                try:
+                    c_capital = data.get('capital')[0]
+                except TypeError:
+                    c_capital = 'Information not found'
                 c_currency_key = list(data.get('currencies'))
                 c_currency_name = data.get('currencies').get(c_currency_key[0]).get('name')
                 c_currency_symbol = data.get('currencies').get(c_currency_key[0]).get('symbol')
@@ -63,6 +67,8 @@ async def get_comparesment(name: str):
                 return comparesment
             else:
                 return False
+
+
 async def get_country_weather(capital: str):
     url = f'https://api.openweathermap.org/data/2.5/weather?q={capital}&appid=cb8801fceffebeb18636363fc0e20105&units=metric'
     async with aiohttp.ClientSession() as session:
@@ -82,6 +88,7 @@ async def get_country_weather(capital: str):
             else:
                 return False
 
+
 async def get_county_desc(name: str):
     params = {
         'engine': 'google',
@@ -92,6 +99,19 @@ async def get_county_desc(name: str):
     result = search.get_dict()
     data = {
         'description': result['knowledge_graph'].get('description'),
-        'map': result['organic_results'][0].get('thumbnail')
+    }
+    return data
+
+
+async def get_county_map(name: str):
+    params = {
+        'engine': 'google_images',
+        'q': name,
+        'api_key': os.environ.get('serpapi_api')
+    }
+    search = GoogleSearch(params)
+    result = search.get_dict()
+    data = {
+        'map': result.get('suggested_searches')[0].get('thumbnail'),
     }
     return data
